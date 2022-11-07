@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
+using STMIS.Models;
 
 namespace STMIS.Data
 {
@@ -12,5 +12,6 @@ namespace STMIS.Data
         {
 
         }
+        public DbSet<AppUser> AppUser { get; set; }
     }
 }

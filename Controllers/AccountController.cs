@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using STMIS.Interfaces;
 using STMIS.Models;
 using STMIS.Models.ViewModels;
@@ -11,18 +12,20 @@ namespace STMIS.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly ISendGridEmail _sendGridEmail;
-        public AccountController(UserManager<IdentityUser> userManager, 
-            SignInManager<IdentityUser> signInManager,
+        public AccountController(UserManager<AppUser> userManager, 
+            SignInManager<AppUser> signInManager,
             ISendGridEmail sendGridEmail,
             RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _sendGridEmail = sendGridEmail;
-            //_roleManager = roleManager;
+            _roleManager = roleManager;
         }
         [HttpPost]
         [AllowAnonymous]
@@ -107,7 +110,25 @@ namespace STMIS.Controllers
         }
         public async Task<IActionResult> Register(string? returnUrl = null)
         {
+            if (!await _roleManager.RoleExistsAsync("Pokemon"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole("Pokemon"));
+                await _roleManager.CreateAsync(new IdentityRole("Trainer"));
+            }
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem()
+            {
+                Value = "Pokemon",
+                Text = "Pokemon"
+            });
+            listItems.Add(new SelectListItem()
+            {
+                Value = "Trainer",
+                Text = "Trainer"
+            });
+
             RegisterViewModel registerViewModel = new RegisterViewModel();
+            registerViewModel.RoleList = listItems;
             registerViewModel.ReturnUrl = returnUrl;
             return View(registerViewModel);
         }
@@ -120,11 +141,20 @@ namespace STMIS.Controllers
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
+
                 // register user
                 var user = new AppUser { Email = registerViewModel.Email,UserName = registerViewModel.UserName };
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);
                 if (result.Succeeded)
                 {
+                    if (registerViewModel.RoleSelected != null && registerViewModel.RoleSelected.Length > 0 && registerViewModel.RoleSelected == "Trainer")
+                    {
+                        await _userManager.AddToRoleAsync(user, "Trainer");
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, "Pokemon");
+                    }
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }

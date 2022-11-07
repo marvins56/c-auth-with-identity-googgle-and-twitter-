@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace STMIS.Models.ViewModels
@@ -21,7 +22,9 @@ namespace STMIS.Models.ViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
+         
         public string? ReturnUrl { get; set; }
+        public IEnumerable<SelectListItem>? RoleList { get; set; }
+        public string? RoleSelected { get; set; }
     }
 }
