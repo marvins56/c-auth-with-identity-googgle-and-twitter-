@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using STMIS.Models;
+using STMIS.Models.ViewModels;
 using System.Diagnostics;
 
 namespace STMIS.Controllers

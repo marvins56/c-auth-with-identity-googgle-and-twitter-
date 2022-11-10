@@ -36,22 +36,22 @@ builder.Services.AddAuthentication()
     options.ClientId = "790020427308-ebl0hdllq7t625bgia3dtq506e8om9g1.apps.googleusercontent.com";
     options.ClientSecret = "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";
 });
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
-    options.AddPolicy("UserAndAdmin", policy => policy.RequireRole("Admin").RequireRole("User"));
-    options.AddPolicy("Admin_CreateAccess", policy => policy.RequireRole("Admin").RequireClaim("create", "True"));
-    options.AddPolicy("Admin_Create_Edit_DeleteAccess", policy => policy.RequireRole("Admin").RequireClaim("create", "True")
-    .RequireClaim("edit", "True")
-    .RequireClaim("Delete", "True"));
-    options.AddPolicy("Admin_Create_Edit_DeleteAccess_OR_SuperAdmin", policy => policy.RequireAssertion(context =>
-    context.User.IsInRole("Admin") && context.User.HasClaim(c => c.Type == "Create" && c.Value == "True")
-                        && context.User.HasClaim(c => c.Type == "Edit" && c.Value == "True")
-                        && context.User.HasClaim(c => c.Type == "Delete" && c.Value == "True")
-                        || context.User.IsInRole("SuperAdmin")));
-    options.AddPolicy("OnlySuperAdminChecker", policy => policy.Requirements.Add(new OnlyPokemonAuthorization()));
-    options.AddPolicy("FirstNameAuth", policy => policy.Requirements.Add(new NicknameRequirement("billy")));
-});
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+//    options.AddPolicy("UserAndAdmin", policy => policy.RequireRole("Admin").RequireRole("User"));
+//    options.AddPolicy("Admin_CreateAccess", policy => policy.RequireRole("Admin").RequireClaim("create", "True"));
+//    options.AddPolicy("Admin_Create_Edit_DeleteAccess", policy => policy.RequireRole("Admin").RequireClaim("create", "True")
+//    .RequireClaim("edit", "True")
+//    .RequireClaim("Delete", "True"));
+//    options.AddPolicy("Admin_Create_Edit_DeleteAccess_OR_SuperAdmin", policy => policy.RequireAssertion(context =>
+//    context.User.IsInRole("Admin") && context.User.HasClaim(c => c.Type == "Create" && c.Value == "True")
+//                        && context.User.HasClaim(c => c.Type == "Edit" && c.Value == "True")
+//                        && context.User.HasClaim(c => c.Type == "Delete" && c.Value == "True")
+//                        || context.User.IsInRole("SuperAdmin")));
+//    options.AddPolicy("OnlySuperAdminChecker", policy => policy.Requirements.Add(new OnlyPokemonAuthorization()));
+//    options.AddPolicy("FirstNameAuth", policy => policy.Requirements.Add(new NicknameRequirement("billy")));
+//});
 
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration.GetSection("SendGrid"));
 builder.Services.AddTransient<ISendGridEmail, SendGridEmail>();

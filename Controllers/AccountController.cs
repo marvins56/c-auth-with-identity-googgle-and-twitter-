@@ -89,7 +89,7 @@ namespace STMIS.Controllers
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    //await _userManager.AddToRoleAsync(user, "Pokemon");
+                    await _userManager.AddToRoleAsync(user, "Pokemon");
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {

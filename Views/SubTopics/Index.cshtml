@@ -1,0 +1,65 @@
+﻿@model IEnumerable<STMIS.Models.SubTopicsTable>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTopic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Overview)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsComplete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datetime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Class)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Topic)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTopic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Overview)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsComplete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datetime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class.ClassId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Topic.TopicId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SubTopicsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SubTopicsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SubTopicsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

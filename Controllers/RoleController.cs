@@ -11,15 +11,12 @@ namespace STMIS.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-
         public RoleController(ApplicationDbContext db, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _db = db;
             _roleManager = roleManager;
             _userManager = userManager;
         }
-
-
         public IActionResult Index()
         {
             var roles = _db.Roles.ToList();
