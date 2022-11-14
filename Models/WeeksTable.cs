@@ -11,7 +11,7 @@ public partial class WeeksTable
 {
     [Key]
     [Column("Week_id")]
-    public string WeekId { get; set; } = null!;
+    public int WeekId { get; set; }
 
     [Column("Week_Name")]
     [StringLength(50)]

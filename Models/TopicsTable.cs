@@ -11,15 +11,14 @@ public partial class TopicsTable
 {
     [Key]
     [Column("Topic_id")]
-    public string TopicId { get; set; } = null!;
+    public int TopicId { get; set; }
 
     [Column("Topic_Name")]
     [StringLength(50)]
     public string? TopicName { get; set; }
 
     [Column("Class_id")]
-    [StringLength(450)]
-    public string ClassId { get; set; } = null!;
+    public int ClassId { get; set; }
 
     public bool? IsComplete { get; set; }
 
@@ -27,8 +26,7 @@ public partial class TopicsTable
     public DateTime? DateTime { get; set; }
 
     [Column("Subject_id")]
-    [StringLength(450)]
-    public string SubjectId { get; set; } = null!;
+    public int SubjectId { get; set; }
 
     [ForeignKey("ClassId")]
     [InverseProperty("TopicsTables")]

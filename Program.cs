@@ -72,6 +72,15 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapDefaultControllerRoute();
+
+    endpoints.MapGet("/", context =>
+    {
+        return Task.Run(() => context.Response.Redirect("/Home/Index"));
+    });
+});
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

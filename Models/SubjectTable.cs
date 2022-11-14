@@ -11,7 +11,7 @@ public partial class SubjectTable
 {
     [Key]
     [Column("Subject_id")]
-    public string SubjectId { get; set; } = null!;
+    public int SubjectId { get; set; }
 
     [StringLength(50)]
     public string Name { get; set; } = null!;

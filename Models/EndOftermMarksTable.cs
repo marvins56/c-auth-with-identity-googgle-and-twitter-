@@ -11,19 +11,16 @@ public partial class EndOftermMarksTable
 {
     [Key]
     [Column("Marks_id")]
-    public string MarksId { get; set; } = null!;
+    public int MarksId { get; set; }
 
     [Column("Subject_id")]
-    [StringLength(450)]
-    public string SubjectId { get; set; } = null!;
+    public int SubjectId { get; set; }
 
     [Column("Student_id")]
-    [StringLength(450)]
-    public string StudentId { get; set; } = null!;
+    public int StudentId { get; set; }
 
     [Column("Class_id")]
-    [StringLength(450)]
-    public string ClassId { get; set; } = null!;
+    public int ClassId { get; set; }
 
     public int? Marks { get; set; }
 

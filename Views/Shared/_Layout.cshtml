@@ -2,74 +2,6 @@
 @inject SignInManager<AppUser> SignInManager 
 @inject UserManager<AppUser> UserManager
 
-@*
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="User" asp-action="Index">Users</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Role" asp-action="Index">Roles</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="User" asp-action="ManageClaims">Claims</a>
-                        </li>
-                        @if(SignInManager.IsSignedIn(User))
-                        {
-                           <li class="nav-item">
-                                <a class="nav-link" href="#">Hello @UserManager.GetUserName(User)</a>
-                            </li>
-                            <li class="nav-item">
-                                <form id="logoutForm" method="post" class="form-inline" asp-controller="Account"
-                                asp-action="LogOff">
-                                    <button type="submit" class="btn nav-link">Logout</button>
-                                </form>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                            </li>  
-                                                    <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
-                        </li>
-                                              <li class="nav-item">
-                                <form id="logoutForm" method="post" class="form-inline" asp-controller="Account"
-                                asp-action="LogOff">
-                                    <button type="submit" class="btn nav-link">Logout</button>
-                                </form>
-                            </li>
-                        }
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-      
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - IdentityAppCourse2022 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            &copy; 2022 - STMIS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-
-</body>
-</html>
-*@
-
 <!DOCTYPE html>
 <html
   lang="en"
@@ -125,11 +57,12 @@
   </head>
 
   <body>
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
-
+        
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a asp-controller="Home" asp-action="Index" class="app-brand-link">
@@ -188,7 +121,7 @@
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+                        <span class="app-brand-text demo menu-text fw-bolder ms-2">SMTIS</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -336,14 +269,16 @@
                     <li>
                       <div class="dropdown-divider"></div>
                     </li>
+                      
                     <li>
                          <form id="logoutForm" method="post"  asp-controller="Account"
                                 asp-action="LogOff">
-                                    <button type="submit" class="btn nav-link">Logout</button>
+                           <button type="submit" class="btn nav-link">Logout</button>
 
-                                </form>
+                       </form>
                     
                     </li>
+                        
                   </ul>
                 </li>
                 <!--/ User -->
@@ -356,11 +291,11 @@
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
-
+          
             <div class="container-xxl flex-grow-1 container-p-y">
           @RenderBody()
-
             </div>
+                        
             <!-- / Content -->
 
 

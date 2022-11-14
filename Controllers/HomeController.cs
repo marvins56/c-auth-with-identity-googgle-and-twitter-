@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using STMIS.Models;
 using STMIS.Models.ViewModels;
 using System.Diagnostics;
@@ -13,7 +14,7 @@ namespace STMIS.Controllers
         {
             _logger = logger;
         }
-
+        [Authorize]
         public IActionResult Index()
         {
             return View();

@@ -11,15 +11,14 @@ public partial class StudentsTable
 {
     [Key]
     [Column("Student_id")]
-    public string StudentId { get; set; } = null!;
+    public int StudentId { get; set; }
 
     [Column("Student_Name")]
     [StringLength(50)]
     public string StudentName { get; set; } = null!;
 
     [Column("Class_id")]
-    [StringLength(450)]
-    public string ClassId { get; set; } = null!;
+    public int ClassId { get; set; }
 
     [ForeignKey("ClassId")]
     [InverseProperty("StudentsTables")]

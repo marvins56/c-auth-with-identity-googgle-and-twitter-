@@ -11,11 +11,10 @@ public partial class SubTopicsTable
 {
     [Key]
     [Column("SubTopics_id")]
-    public string SubTopicsId { get; set; } = null!;
+    public int SubTopicsId { get; set; }
 
     [Column("Topic_id")]
-    [StringLength(450)]
-    public string TopicId { get; set; } = null!;
+    public int TopicId { get; set; }
 
     [StringLength(500)]
     public string SubTopic { get; set; } = null!;
@@ -28,8 +27,7 @@ public partial class SubTopicsTable
     public DateTime? Datetime { get; set; }
 
     [Column("Class_id")]
-    [StringLength(450)]
-    public string ClassId { get; set; } = null!;
+    public int ClassId { get; set; }
 
     [ForeignKey("ClassId")]
     [InverseProperty("SubTopicsTables")]

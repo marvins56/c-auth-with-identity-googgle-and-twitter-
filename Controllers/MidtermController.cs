@@ -27,7 +27,7 @@ namespace STMIS.Controllers
         }
 
         // GET: Midterm/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.MidtermMarksTables == null)
             {
@@ -76,7 +76,7 @@ namespace STMIS.Controllers
         }
 
         // GET: Midterm/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.MidtermMarksTables == null)
             {
@@ -99,7 +99,7 @@ namespace STMIS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MarksId,SubjectId,StudentId,ClassId,Marks,Status")] MidtermMarksTable midtermMarksTable)
+        public async Task<IActionResult> Edit(int id, [Bind("MarksId,SubjectId,StudentId,ClassId,Marks,Status")] MidtermMarksTable midtermMarksTable)
         {
             if (id != midtermMarksTable.MarksId)
             {
@@ -133,7 +133,7 @@ namespace STMIS.Controllers
         }
 
         // GET: Midterm/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.MidtermMarksTables == null)
             {
@@ -156,7 +156,7 @@ namespace STMIS.Controllers
         // POST: Midterm/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.MidtermMarksTables == null)
             {
@@ -172,7 +172,7 @@ namespace STMIS.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MidtermMarksTableExists(string id)
+        private bool MidtermMarksTableExists(int id)
         {
           return (_context.MidtermMarksTables?.Any(e => e.MarksId == id)).GetValueOrDefault();
         }

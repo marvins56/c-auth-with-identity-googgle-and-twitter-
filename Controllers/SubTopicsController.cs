@@ -27,7 +27,7 @@ namespace STMIS.Controllers
         }
 
         // GET: SubTopics/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.SubTopicsTables == null)
             {
@@ -73,7 +73,7 @@ namespace STMIS.Controllers
         }
 
         // GET: SubTopics/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.SubTopicsTables == null)
             {
@@ -95,7 +95,7 @@ namespace STMIS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("SubTopicsId,TopicId,SubTopic,Overview,IsComplete,Datetime,ClassId")] SubTopicsTable subTopicsTable)
+        public async Task<IActionResult> Edit(int id, [Bind("SubTopicsId,TopicId,SubTopic,Overview,IsComplete,Datetime,ClassId")] SubTopicsTable subTopicsTable)
         {
             if (id != subTopicsTable.SubTopicsId)
             {
@@ -128,7 +128,7 @@ namespace STMIS.Controllers
         }
 
         // GET: SubTopics/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.SubTopicsTables == null)
             {
@@ -150,7 +150,7 @@ namespace STMIS.Controllers
         // POST: SubTopics/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.SubTopicsTables == null)
             {
@@ -166,7 +166,7 @@ namespace STMIS.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SubTopicsTableExists(string id)
+        private bool SubTopicsTableExists(int id)
         {
           return (_context.SubTopicsTables?.Any(e => e.SubTopicsId == id)).GetValueOrDefault();
         }

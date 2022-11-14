@@ -28,7 +28,7 @@ namespace STMIS.Controllers
         }
 
         // GET: Class/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.ClassTables == null)
             {
@@ -68,7 +68,7 @@ namespace STMIS.Controllers
         }
 
         // GET: Class/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.ClassTables == null)
             {
@@ -88,7 +88,7 @@ namespace STMIS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("ClassId,ClassName")] ClassTable classTable)
+        public async Task<IActionResult> Edit(int id, [Bind("ClassId,ClassName")] ClassTable classTable)
         {
             if (id != classTable.ClassId)
             {
@@ -119,7 +119,7 @@ namespace STMIS.Controllers
         }
 
         // GET: Class/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.ClassTables == null)
             {
@@ -139,7 +139,7 @@ namespace STMIS.Controllers
         // POST: Class/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.ClassTables == null)
             {
@@ -155,7 +155,7 @@ namespace STMIS.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ClassTableExists(string id)
+        private bool ClassTableExists(int id)
         {
           return (_context.ClassTables?.Any(e => e.ClassId == id)).GetValueOrDefault();
         }

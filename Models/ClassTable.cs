@@ -11,7 +11,7 @@ public partial class ClassTable
 {
     [Key]
     [Column("Class_id")]
-    public string ClassId { get; set; } = null!;
+    public int ClassId { get; set; }
 
     [Column("Class_Name")]
     [StringLength(50)]

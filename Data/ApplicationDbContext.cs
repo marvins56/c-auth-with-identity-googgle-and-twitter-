@@ -15,6 +15,7 @@ namespace STMIS.Data
         public DbSet<AppUser> AppUser { get; set; }
 
         public virtual DbSet<ClassTable> ClassTables { get; set; }
+
         public virtual DbSet<EndOftermMarksTable> EndOftermMarksTables { get; set; }
 
         public virtual DbSet<MidtermMarksTable> MidtermMarksTables { get; set; }
@@ -29,22 +30,23 @@ namespace STMIS.Data
 
         public virtual DbSet<WeeksTable> WeeksTables { get; set; }
 
-      /*  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+   /*     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
             => optionsBuilder.UseSqlServer("Data Source=MARVIN\\SQLEXPRESS;Initial Catalog=STMIS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 */
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
             modelBuilder.Entity<ClassTable>(entity =>
             {
-                entity.HasKey(e => e.ClassId).HasName("PK__tmp_ms_x__B096396FFB6A633A");
+                entity.HasKey(e => e.ClassId).HasName("PK__ClassTab__B096396F125CFED2");
             });
 
             modelBuilder.Entity<EndOftermMarksTable>(entity =>
             {
-                entity.HasKey(e => e.MarksId).HasName("PK__EndOfter__AF29F1A92EBCAFED");
+                entity.HasKey(e => e.MarksId).HasName("PK__EndOfter__AF29F1A9F4666E68");
+
+                entity.Property(e => e.MarksId).ValueGeneratedNever();
 
                 entity.HasOne(d => d.Class).WithMany(p => p.EndOftermMarksTables)
                     .OnDelete(DeleteBehavior.ClientSetNull)
@@ -61,7 +63,7 @@ namespace STMIS.Data
 
             modelBuilder.Entity<MidtermMarksTable>(entity =>
             {
-                entity.HasKey(e => e.MarksId).HasName("PK__MidtermM__AF29F1A989497CA5");
+                entity.HasKey(e => e.MarksId).HasName("PK__MidtermM__AF29F1A9FC08BA14");
 
                 entity.HasOne(d => d.Class).WithMany(p => p.MidtermMarksTables)
                     .OnDelete(DeleteBehavior.ClientSetNull)
@@ -78,7 +80,7 @@ namespace STMIS.Data
 
             modelBuilder.Entity<StudentsTable>(entity =>
             {
-                entity.HasKey(e => e.StudentId).HasName("PK__Students__A2F7EDF44F705171");
+                entity.HasKey(e => e.StudentId).HasName("PK__Students__A2F7EDF4C28CF7C7");
 
                 entity.HasOne(d => d.Class).WithMany(p => p.StudentsTables)
                     .OnDelete(DeleteBehavior.ClientSetNull)
@@ -87,7 +89,7 @@ namespace STMIS.Data
 
             modelBuilder.Entity<SubTopicsTable>(entity =>
             {
-                entity.HasKey(e => e.SubTopicsId).HasName("PK__SubTopic__E32A7C73550346F0");
+                entity.HasKey(e => e.SubTopicsId).HasName("PK__SubTopic__E32A7C73C0A0919D");
 
                 entity.HasOne(d => d.Class).WithMany(p => p.SubTopicsTables)
                     .OnDelete(DeleteBehavior.ClientSetNull)
@@ -100,12 +102,12 @@ namespace STMIS.Data
 
             modelBuilder.Entity<SubjectTable>(entity =>
             {
-                entity.HasKey(e => e.SubjectId).HasName("PK__tmp_ms_x__D98E58EEF5CE6768");
+                entity.HasKey(e => e.SubjectId).HasName("PK__SubjectT__D98E58EE16B0FED6");
             });
 
             modelBuilder.Entity<TopicsTable>(entity =>
             {
-                entity.HasKey(e => e.TopicId).HasName("PK__TopicsTa__8DEBA02D05B5EB3B");
+                entity.HasKey(e => e.TopicId).HasName("PK__TopicsTa__8DEBA02DF7764511");
 
                 entity.HasOne(d => d.Class).WithMany(p => p.TopicsTables)
                     .OnDelete(DeleteBehavior.ClientSetNull)
@@ -118,13 +120,12 @@ namespace STMIS.Data
 
             modelBuilder.Entity<WeeksTable>(entity =>
             {
-                entity.HasKey(e => e.WeekId).HasName("PK__tmp_ms_x__CDA23E5C1E580B69");
+                entity.HasKey(e => e.WeekId).HasName("PK__WeeksTab__CDA23E5CF841448A");
             });
 
             OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
     }
 }

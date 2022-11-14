@@ -28,7 +28,7 @@ namespace STMIS.Controllers
         }
 
         // GET: Subject/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.SubjectTables == null)
             {
@@ -68,7 +68,7 @@ namespace STMIS.Controllers
         }
 
         // GET: Subject/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.SubjectTables == null)
             {
@@ -88,7 +88,7 @@ namespace STMIS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("SubjectId,Name")] SubjectTable subjectTable)
+        public async Task<IActionResult> Edit(int id, [Bind("SubjectId,Name")] SubjectTable subjectTable)
         {
             if (id != subjectTable.SubjectId)
             {
@@ -119,7 +119,7 @@ namespace STMIS.Controllers
         }
 
         // GET: Subject/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.SubjectTables == null)
             {
@@ -139,7 +139,7 @@ namespace STMIS.Controllers
         // POST: Subject/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.SubjectTables == null)
             {
@@ -155,7 +155,7 @@ namespace STMIS.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SubjectTableExists(string id)
+        private bool SubjectTableExists(int id)
         {
           return (_context.SubjectTables?.Any(e => e.SubjectId == id)).GetValueOrDefault();
         }
