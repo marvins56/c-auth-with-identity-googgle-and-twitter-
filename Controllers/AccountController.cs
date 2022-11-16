@@ -89,7 +89,7 @@ namespace STMIS.Controllers
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, "Pokemon");
+                    await _userManager.AddToRoleAsync(user, "Teacher");
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
@@ -110,22 +110,22 @@ namespace STMIS.Controllers
         }
         public async Task<IActionResult> Register(string? returnUrl = null)
         {
-            if (!await _roleManager.RoleExistsAsync("Pokemon"))
+            if (!await _roleManager.RoleExistsAsync("Teacher"))
             {
-                await _roleManager.CreateAsync(new IdentityRole("Pokemon"));
-                await _roleManager.CreateAsync(new IdentityRole("Trainer"));
+/*                await _roleManager.CreateAsync(new IdentityRole("Pokemon"));
+*/                await _roleManager.CreateAsync(new IdentityRole("Trainer"));
             }
             List<SelectListItem> listItems = new List<SelectListItem>();
             listItems.Add(new SelectListItem()
             {
-                Value = "Pokemon",
-                Text = "Pokemon"
+                Value = "Teacher",
+                Text = "Teacher"
             });
-            listItems.Add(new SelectListItem()
+           /* listItems.Add(new SelectListItem()
             {
                 Value = "Trainer",
                 Text = "Trainer"
-            });
+            })*/;
 
             RegisterViewModel registerViewModel = new RegisterViewModel();
             registerViewModel.RoleList = listItems;
@@ -179,6 +179,8 @@ namespace STMIS.Controllers
                 var result = await _signInManager.PasswordSignInAsync(loginViewModel.Username, loginViewModel.Password, loginViewModel.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
+
+                    var userid = User.FindFirst(ClaimTypes.NameIdentifier);
                     return RedirectToAction("Index", "Home");
                 }
                 if (result.IsLockedOut)
@@ -262,6 +264,13 @@ namespace STMIS.Controllers
             }
             return View(resetPasswordViewModel);
         }
+       /* public async Task<IActionResult> YourMethodName()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) // will give the user's userId
+        var userName = User.FindFirstValue(ClaimTypes.Name) // will give the user's userName
 
+        ApplicationUser applicationUser = await _userManager.GetUserAsync(User);
+            string userEmail = applicationUser?.Email; // will give the user's Email
+        }*/
     }
 }

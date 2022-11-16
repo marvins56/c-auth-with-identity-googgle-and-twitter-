@@ -189,15 +189,41 @@
             <h4>User another service to log in.</h4>
             <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post" role="form">
                 <div>
-                    <p>
-                        @foreach(var provider in loginProivders)
-                        {
+                                    <div class="d-flex flex-wrap" id="icons-container">
 
-                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" 
-                                    title="Log in using your @provider.Name account">@provider.Name</button>
+                        @foreach(var provider in loginProivders)
+                        {     if(provider.Name == "Google"){
+                                                <button type="submit" class="btn btn-outline-ligt"  name="provider" value="@provider.Name"
+                                            title="Log in using your @provider.Name account">
+                                                    @*  <box-icon type='logo' name='facebook-circle' color="blue"></box-icon> @provider.Name
+                                        *@
+                                                    <div class="card icon-card cursor-pointer text-center mb-1 mx-1">
+                                                        <div class="card-body">
+                                                            <box-icon type='logo' color="red" name='google'></box-icon>
+                                                            <p class="icon-name text-capitalize text-truncate mb-0">Google</p>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                    }
+                                            if (provider.Name == "Facebook")
+                                            {
+                                                <button type="submit" class="btn btn-outline-ligt" name="provider" value="@provider.Name"
+                                            title="Log in using your @provider.Name account">
+                                                  @*  <box-icon type='logo' name='facebook-circle' color="blue"></box-icon> @provider.Name
+                                               *@
+                                                    <div class="card icon-card cursor-pointer text-center mb-1 mx-1">
+                                                        <div class="card-body">
+                                                            <i class="bx bxl-facebook-circle mb-2"></i>
+                                                            <p class="icon-name text-capitalize text-truncate mb-0">facebook</p>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                              
+                                            }
+
                         }
-                    </p>
-                </div>
+                                    </div>
+                                </div>
             </form>
        
    
@@ -219,6 +245,7 @@
     <script src="~/assets/vendor/libs/popper/popper.js"></script>
     <script src="~/assets/vendor/js/bootstrap.js"></script>
     <script src="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
     <script src="~/assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
