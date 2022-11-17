@@ -147,13 +147,13 @@ namespace STMIS.Controllers
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);
                 if (result.Succeeded)
                 {
-                    if (registerViewModel.RoleSelected != null && registerViewModel.RoleSelected.Length > 0 && registerViewModel.RoleSelected == "Trainer")
+                    if (registerViewModel.RoleSelected != null && registerViewModel.RoleSelected.Length > 0 && registerViewModel.RoleSelected == "Teacher")
                     {
-                        await _userManager.AddToRoleAsync(user, "Trainer");
+                        await _userManager.AddToRoleAsync(user, "Teacher");
                     }
                     else
                     {
-                        await _userManager.AddToRoleAsync(user, "Pokemon");
+                        await _userManager.AddToRoleAsync(user, "Teacher");
                     }
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);

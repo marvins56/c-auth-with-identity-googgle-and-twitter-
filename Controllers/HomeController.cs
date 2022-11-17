@@ -6,6 +6,7 @@ using System.Diagnostics;
 
 namespace STMIS.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

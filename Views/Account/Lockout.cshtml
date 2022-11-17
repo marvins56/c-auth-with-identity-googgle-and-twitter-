@@ -3,4 +3,23 @@
 *@
 @{
 }
-<h1>You are locked out of account. Please try again in a couple minutes.</h1>
+
+@{
+    Layout = "~/Views/Shared/_plain.cshtml";
+}
+<div class="row mb-5 mt-10 justify-content-center">
+    <div class="col-md-12 col-lg-4 mb-3 justify-content-center">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title text-uppercase">ACCOUNT LOCKED</h5>
+                <p class="card-text text-danger">
+
+                    <h1>You are locked out of account. Please try again in a couple minutes.</h1>
+                </p>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-primary">Back Home</a>
+
+            </div>
+            <div class="card-footer text-muted">@DateTime.Now</div>
+        </div>
+    </div>
+</div>

@@ -6,30 +6,50 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ClassName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClassName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ClassId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ClassId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ClassId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<hr class="my-5" />
+
+<!-- Bordered Table -->
+<div class="card">
+    <h5 class="card-header">Classes</h5>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  @foreach (var item in Model) {
+                    <tr>
+                  
+                        <td>
+                            <div class="dropdown">
+                                <button type="button"
+                                        class="btn p-0 dropdown-toggle hide-arrow"
+                                        data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.ClassId"> <i class="bx bx-edit-alt me-1"></i>Edit</a>
+                                    <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.ClassId"><i class="bx bx-trash me-1"></i>Delete</a>
+@*                                    <a asp-action="Details" asp-route-id="@item.ClassId">Details</a> |
+*@                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--/ Bordered Table -->
+
+<hr class="my-5" />
