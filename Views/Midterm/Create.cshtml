@@ -4,46 +4,110 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="col-xxl">
+    <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Assign Student Mid term marks</h5>
+            <small class="text-muted float-end">populate user marks</small>
+        </div>
 
-<h4>MidtermMarksTable</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="SubjectId" class="control-label"></label>
-                <select asp-for="SubjectId" class ="form-control" asp-items="ViewBag.SubjectId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentId" class="control-label"></label>
-                <select asp-for="StudentId" class ="form-control" asp-items="ViewBag.StudentId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClassId" class="control-label"></label>
-                <select asp-for="ClassId" class ="form-control" asp-items="ViewBag.ClassId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Marks" class="control-label"></label>
-                <input asp-for="Marks" class="form-control" />
-                <span asp-validation-for="Marks" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*                <div class="form-group">
+                <label asp-for="MarksId" class="control-label"></label>
+                <input asp-for="MarksId" class="form-control" />
+                <span asp-validation-for="MarksId" class="text-danger"></span>
+                </div*@
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">
+                        <label asp-for="SubjectId"></label>
+                    </label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+                                <i class="bx bx-user"></i>
+                            </span>
+
+                            <select asp-for="SubjectId" class="form-control" asp-items="ViewBag.SubjectId"></select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-icon-default-company"><label asp-for="Marks" class="control-label"></label></label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text">
+                                <i class="bx bx-buildings"></i>
+                            </span>
+
+                            <input class="form-control" />
+                            <span asp-validation-for="Marks" class="text-danger"></span>
+                            <input type="number"
+                                   id="basic-icon-default-company"
+                                   class="form-control"
+                                   aria-describedby="basic-icon-default-company2"
+                                   asp-for="Marks" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">
+                        <label asp-for="StudentId"></label>
+                    </label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+                                <i class="bx bx-user"></i>
+                            </span>
+
+                            <select asp-for="StudentId" class="form-control" asp-items="ViewBag.StudentId"></select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">
+                        <label asp-for="ClassId"></label>
+                    </label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+                                <i class="bx bx-user"></i>
+                            </span>
+
+                            <select asp-for="ClassId" class="form-control" asp-items="ViewBag.ClassId"></select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">
+                        Comments
+                    </label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+
+                            </span>
+                            <textarea asp-for="Status" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-end">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Proceed</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

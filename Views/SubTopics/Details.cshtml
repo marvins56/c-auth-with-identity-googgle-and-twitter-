@@ -4,51 +4,57 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>SubTopicsTable</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SubTopic)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SubTopic)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Overview)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Overview)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsComplete)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsComplete)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Datetime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Datetime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Class)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Class.ClassId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Topic)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Topic.TopicId)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.SubTopicsId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+
+<div class="row mb-5 mt-10 justify-content-center">
+    <div class="col-md-12 col-lg-4 mb-3 justify-content-center">
+        <div class="card text-center">
+            <div class="card-body">
+                <div class="card-header  text-uppercase">SUBTOPIC DETAILS</div>
+                <h5 class="card-title text-uppercase"></h5>
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.SubTopic)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.SubTopic)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Overview)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Overview)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.IsComplete)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.IsComplete)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Datetime)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Datetime)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Class)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Class.ClassId)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Topic)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Topic.TopicId)
+                    </dd>
+                </dl>
+                <a asp-action="Edit" class="btn btn-outline-primary" asp-route-id="@Model?.SubTopicsId">Edit</a> | <a asp-action="Index" class="btn btn-outline-primary">Back </a>
+
+            </div>
+            <div class="card-footer text-muted">@DateTime.Now</div>
+        </div>
+    </div>
 </div>

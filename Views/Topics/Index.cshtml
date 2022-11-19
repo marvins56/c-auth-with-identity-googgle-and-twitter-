@@ -4,15 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
+<!-- Bordered Table -->
+<div class="card">
+    <h5 class="card-header">SUBTOPICS</h5>
     <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
+
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table ">
+                <thead>
+                    <tr>
+                       <th>
                 @Html.DisplayNameFor(model => model.TopicName)
             </th>
             <th>
@@ -27,13 +29,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.Subject)
             </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
+                        <th></th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                        <td>
                 @Html.DisplayFor(modelItem => item.TopicName)
             </td>
             <td>
@@ -48,12 +52,28 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Subject.SubjectId)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TopicId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TopicId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TopicId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button"
+                                        class="btn p-0 dropdown-toggle hide-arrow"
+                                        data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.TopicId"> <i class="bx bx-edit-alt me-1"></i>Edit</a>
+                                        <a class="dropdown-item" asp-action="Details" asp-route-id="@item.TopicId"><i class="bx bx-edit-alt me-1"></i>Details</a>
+                                        @*                                    <a asp-action="Details" asp-route-id="@item.ClassId">Details</a> |
+                                    *@
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--/ Bordered Table -->
+
+<hr class="my-5" />

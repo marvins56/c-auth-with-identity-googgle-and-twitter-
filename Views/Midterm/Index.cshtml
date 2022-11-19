@@ -4,56 +4,69 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="card">
+    <h5 class="card-header">Mid term Marks </h5>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student)
+                    </th>
+                    <th>@Html.DisplayNameFor(model => model.Marks)</th>
+                    <th>@Html.DisplayNameFor(model => model.Status)</th>
+                    <th> @Html.DisplayNameFor(model => model.Class)</th>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Marks)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Class)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subject)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Marks)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Class.ClassId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student.StudentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject.SubjectId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MarksId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MarksId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MarksId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                    <th>@Html.DisplayNameFor(model => model.Subject)</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.StudentId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Marks)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Class.ClassId)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Subject.SubjectId)
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button"
+                                    class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.MarksId"> <i class="bx bx-edit-alt me-1"></i>Edit</a>
+                                    <a class="dropdown-item" asp-action="Details" asp-route-id="@item.MarksId"><i class="bx bx-edit-alt me-1"></i>Details</a>
+                                    <a asp-action="Delete" asp-route-id="@item.MarksId"><i class="bx bx-trash me-1"></i>Details</a> |
+
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+                @* <td><span class="badge bg-label-primary me-1">Active</span></td>*@
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--/ Basic Bootstrap Table -->
+
+<hr class="my-5" />

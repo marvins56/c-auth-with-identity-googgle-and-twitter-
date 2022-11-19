@@ -3,13 +3,14 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1>
-
-<div>
-    <h4>TopicsTable</h4>
-    <hr />
-    <dl class="row">
+        
+<div class="row mb-5 mt-10 justify-content-center">
+    <div class="col-md-12 col-lg-4 mb-3 justify-content-center">
+        <div class="card text-center">
+            <div class="card-body">
+                <div class="card-header  text-uppercase">TOPIC DETAILS</div>
+                <h5 class="card-title text-uppercase"></h5>
+                  <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TopicName)
         </dt>
@@ -41,8 +42,10 @@
             @Html.DisplayFor(model => model.Subject.SubjectId)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.TopicId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+                <a asp-action="Edit" class="btn btn-outline-primary" asp-route-id="@Model?.TopicId">Edit</a> | <a asp-action="Index" class="btn btn-outline-primary">Back </a>
+
+            </div>
+            <div class="card-footer text-muted">@DateTime.Now</div>
+        </div>
+    </div>
 </div>

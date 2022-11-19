@@ -4,21 +4,20 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="row mb-5 mt-10 justify-content-center">
+    <div class="col-md-12 col-lg-4 mb-3 justify-content-center">
+        <div class="card text-center">
+            <div class="card-body">
+                <div class="card-header  text-uppercase">WEEK details</div>
+                <h5 class="card-title text-uppercase"></h5>
+                <p class="card-text ">
+                    @Html.DisplayNameFor(model => model.WeekId)
+                </p>
+                <p>@Html.DisplayFor(model => model.WeekName)</p>
+                <a asp-action="Edit" class="btn btn-outline-primary" asp-route-id="@Model?.WeekId">Edit</a> | <a asp-action="Index" class="btn btn-outline-primary">Back </a>
 
-<div>
-    <h4>WeeksTable</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.WeekName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.WeekName)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.WeekId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+            </div>
+            <div class="card-footer text-muted">@DateTime.Now</div>
+        </div>
+    </div>
 </div>
