@@ -28,13 +28,13 @@ builder.Services.Configure<IdentityOptions>(opt =>
 builder.Services.AddAuthentication()
 .AddFacebook(options =>
 {
-    options.AppId = "628700462369980";
-    options.AppSecret = "748f89b45a40708be8ff66bea5475114";
+    options.AppId = "PLACE APP ID HERE";
+    options.AppSecret = "PLACE SECRET KEY HERE";
 })
 .AddGoogle(options =>
 {
-    options.ClientId = "790020427308-ebl0hdllq7t625bgia3dtq506e8om9g1.apps.googleusercontent.com";
-    options.ClientSecret = "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";
+    options.ClientId = "PLACE APP KEY HERE";
+    options.ClientSecret = "PLACESECRET KEY HERE";
 });
 builder.Services.AddAuthorization(options =>
 {
